@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p>
+  Word Wander lets you enter a prefix, a suffix, and/or a root and get all of the German words which contain those roots/prefixes/suffixes.
+  
+  For example, if you enter 'ziehen' as a root you will get words like 'abziehen', 'aberziehn', 'aufziehen', und so wieder.
+<p>
+  <form action="/">Enter a prefix and/or root and/or suffix<p>
+        <input type="textarea" rows="1" cols="10" name="prefix" value="{{prefix}}">
+        <input type="textarea" rows="1" cols="10" name="root" value="{{root}}">
+        <input type="textarea" rows="1" cols="10" name="suffix" value="{{suffix}}">
+
+        <input type="submit" name="foo">
+  </form>
+
+  <p>
+  current query: {{query}}<br>
+  cnt query: {{cnt_query}}<br>
+  {% for row in words %}
+
+<div class="row">
+  <div class="col-md-2">{{row.word}}</div>
+  <div class="col-md-2"><a href="http://dict.leo.org/#/search={{row.word}}&searchLoc=0&resultOrder=basic&multiwordShowSingle=on" target="_new"><img src="http://dict.leo.org/img/favicons/ende-929f8e10.ico"></a>
+  <a href="http://translate.google.com/#de/en/{{row.word}}" target="_new"><img src="http://google.com/favicon.ico"></a></div>
+
+
+</div>
+
+  {% endfor %}
+
+  <p>
+ 
+  This uses the 'Free German Dictionay' of 1.6 million German words created by Jan Schreiber and 
+  <a href="http://sourceforge.net/projects/germandict/">available here on sourceforge</a><p>
+
+  
+{% endblock %}
+
+
+  <div class="row">
+    <div class="col-md4">
+      {{row.word}} 
+    </div>
+    <div class="col-md1">
+      a
+    </div>
+    <div class="col-md1">
+      b 
+    </div>
+
+  
+  </div>
+
+
+<!-- if row.top10k
+            |(top10k word!)·
+          a(href="/search?root=#{row.prefix}&search_type=prefix&top10k=#{row.top10k}") #{row.prefix}
+          |#{root}
+          a(href="/search?root=#{row.suffix}&search_type=suffix&top10k=#{row.top10k}") #{row.suffix}
+          | &nbsp;&nbsp; (#{row.word})&nbsp;&nbsp;
+          a(href="https://translate.google.com/#de/en/#{row.word}", target="_new") (translate.google.com)
+          |&nbsp;-&nbsp;
+          -->
+          
+            <div class="col-md4">  
+      <a href="http://dict.leo.org/#/search={{row.word}}&searchLoc=0&resultOrder=basic&multiwordShowSingle=on" target="_new"><img src="http://dict.leo.org/img/favicons/ende-929f8e10.ico"></a>
+    </div>
+    <div class="col-md4">
+      <a href="http://translate.google.com/#de/en/{{row.word}}" target="_new"><img src="http://google.com/favicon.ico"></a>
+    </div>

@@ -1,0 +1,50 @@
+{% load url from future %}
+
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <title>Word Wander - Explore German words</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+ </head>
+<body>
+
+    Word Wander <a href="/">Home</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+
+&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="https://github.com/RichGibson/wordwander">The code on GitHub (enter issues/suggestions here)!</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+   <div class="outer_container ">
+    <div class="container">
+
+        <div class="top_header">
+          <div style="float: left;">
+          
+          </div>
+        </div><!-- top_header -->
+
+        <section class="sidebar ">            
+        </section><!-- sidebar -->        
+
+        <div class="main_content ">
+            <div style="float: left;">
+            {% block title %}{% endblock %}
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div><!-- main_content -->
+    </div><!-- container -->    
+    Word Wander created by Rich Gibson rich.gibson@gmail.com<br>
+    Tiny note on design...I am a back end sort of guy. I like the command line. I write sql by hand (unless I am writing code to write sql for me),
+    I respect, but don't really grok design. I know about controveries over Twitter Bootstrap, and I sort of don't have the spoons to engage that...sorry.
+</div><!-- outer_container -->    
+</body>
+   
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+ </body>
+</html>
+
+
