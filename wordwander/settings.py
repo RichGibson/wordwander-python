@@ -56,7 +56,7 @@ ROOT_URLCONF = 'wordwander.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["/Users/richgibson/wa/wordwander/templates/",],
+        'DIRS': ["/home/www/wordwander/templates/",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

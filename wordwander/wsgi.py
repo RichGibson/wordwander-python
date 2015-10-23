@@ -8,6 +8,9 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
 import os
+import sys
+sys.path.append("/home/www/wordwander")
+os.environ["DJANGO_SETTINGS_MODULE"]="wordwander.settings"
 
 from django.core.wsgi import get_wsgi_application
 

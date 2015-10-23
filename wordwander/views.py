@@ -50,13 +50,15 @@ def make_query(prefix,root,suffix,top10k=0):
     else:            
         clause=clause+"%"
         
+
     if len(prefix+root+suffix) > 0:
         clause = 'and word like "'+clause+'"'
-        query = """select id, word, substr(word,0,instr(word,'" + %s + "')) as prefix from wordwander_word where 1=1 %s %s """ % (root, clause,top10k_clause)       
+        query = """select id, word, top from wordwander_word where 1=1 %s %s """ % (clause,top10k_clause)       
         cnt_query = """select count(*) from word where 1=1 %s %s """ % (clause,top10k_clause)       
     else:
         clause = ''
         query = ''
+        cnt_query = ''
         
     
     #query = "select word, substr(word,0, instr(word,'" + root + "')) as prefix," +
