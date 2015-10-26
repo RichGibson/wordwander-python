@@ -17,10 +17,18 @@ def home(request):
 
      
     (query, cnt_query) = make_query(prefix, root, suffix, top10k)
+    print >>sys.stderr, "query:%r" % query
     if len(query)>0:
         words = Word.objects.raw(query)
+        
+
+        print >>sys.stderr, 'query run!'
+        for w in words:
+            print >>sys.stderr, "w:%r" % w
+        print >>sys.stderr, "done printing results"
     else:
-        words = []
+        print >>sys.stderr, 'query not run'
+        words = ['1','2','3']
         
     return render_to_response('home.html', {'prefix':prefix, 'root':root, 'suffix':suffix, 'query':query, 'cnt_query':cnt_query, 'words':words })
 
@@ -38,17 +46,17 @@ def make_query(prefix,root,suffix,top10k=0):
     if len(prefix)>0:
         clause = prefix
     else:
-        clause="%"
+        clause="%%"
             
     if len(root)>0:
         clause = clause + root
     else:
-        clause=clause+"%"
+        clause=clause+"%%"
             
     if len(suffix)>0:
         clause = clause + suffix
     else:            
-        clause=clause+"%"
+        clause=clause+"%%"
         
 
     if len(prefix+root+suffix) > 0:
