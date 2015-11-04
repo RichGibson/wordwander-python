@@ -5,7 +5,7 @@
 <hr>
   Word Wander lets you enter a prefix, a suffix, and/or a root and get all of the German words which contain those roots/prefixes/suffixes.
   
-  For example, if you enter 'ziehen' as a root you will get words like 'abziehen', 'aberziehn', 'aufziehen', und so wieder.
+  For example, if you enter 'ziehen' as a root you will get words like 'abziehen', 'aberziehen', 'aufziehen', und so wieter.
 <p>
   <form action="/">Enter a prefix and/or root and/or suffix<p>
         <input type="textarea" rows="1" cols="10" name="prefix" value="{{prefix}}">
@@ -16,18 +16,24 @@
   </form>
 
   <p>
-  current query: {{query}}<br>
+  <!--current query: {{query}}<br>
   cnt query: {{cnt_query}}<br>
-
+  -->
 
 <hr>
 
-
+<table class="table table-striped">  
   {% for row in words %}
-<div class="row">
-  <div class="col-md-4">{{row.word}} <a href="http://dict.leo.org/#/search={{row.word}}&searchLoc=0&resultOrder=basic&multiwordShowSingle=on" target="_new"><img src="http://dict.leo.org/img/favicons/ende-929f8e10.ico"></a>
+  <tr>
+    <td width="25%">{{row.word}}</td> 
+    <td><a href="http://dict.leo.org/#/search={{row.word}}&searchLoc=0&resultOrder=basic&multiwordShowSingle=on" target="_new"><img src="http://dict.leo.org/img/favicons/ende-929f8e10.ico"></a>
+  <a href="http://translate.google.com/#de/en/{{row.word}}" target="_new"><img src="http://google.com/favicon.ico" width="22" height="22"></a></td>
+  </tr>
+
+
+<!--  <div class="col-md-4">{{row.word}} <a href="http://dict.leo.org/#/search={{row.word}}&searchLoc=0&resultOrder=basic&multiwordShowSingle=on" target="_new"><img src="http://dict.leo.org/img/favicons/ende-929f8e10.ico"></a>
   <a href="http://translate.google.com/#de/en/{{row.word}}" target="_new"><img src="http://google.com/favicon.ico" width="22" height="22"></a></div>
-  
+  -->
 <!--  
   <div class="col-md-2"><a href="http://dict.leo.org/#/search={{row.word}}&searchLoc=0&resultOrder=basic&multiwordShowSingle=on" target="_new"><img src="http://dict.leo.org/img/favicons/ende-929f8e10.ico"></a>
   <a href="http://translate.google.com/#de/en/{{row.word}}" target="_new"><img src="http://google.com/favicon.ico"></a></div>
