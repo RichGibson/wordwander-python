@@ -28,7 +28,7 @@ def home(request):
         print >>sys.stderr, "done printing results"
     else:
         print >>sys.stderr, 'query not run'
-        words = ['1','2','3']
+        words = []
         
     return render_to_response('home.html', {'prefix':prefix, 'root':root, 'suffix':suffix, 'query':query, 'cnt_query':cnt_query, 'words':words })
 

@@ -14,13 +14,39 @@
 
         <input type="submit" name="foo">
   </form>
-
   <p>
+
+  <h2>Examples</h2>
+  <form action="/">All words which include 'ziehen' <p>
+        <input type="textarea" rows="1" cols="10" name="prefix" value="">
+        <input type="textarea" rows="1" cols="10" name="root" value="ziehen">
+        <input type="textarea" rows="1" cols="10" name="suffix" value="">
+        <input type="submit" name="foo">
+  </form>
+  <p>
+
+  <form action="/">Words which start with 'ab' and end with 'en'<p>
+        <input type="textarea" rows="1" cols="10" name="prefix" value="ab">
+        <input type="textarea" rows="1" cols="10" name="root" value="">
+        <input type="textarea" rows="1" cols="10" name="suffix" value="en">
+        <input type="submit" name="foo">
+  </form>
+  <p>
+
+  <form action="/">Dampf words...<p>
+        <input type="textarea" rows="1" cols="10" name="prefix" value="">
+        <input type="textarea" rows="1" cols="10" name="root" value="dampf">
+        <input type="textarea" rows="1" cols="10" name="suffix" value="">
+        <input type="submit" name="foo">
+  </form>
+  <p>
+
+
   <!--current query: {{query}}<br>
   cnt query: {{cnt_query}}<br>
   -->
 
-<hr>
+
 
 <table class="table table-striped">  
   {% for row in words %}
