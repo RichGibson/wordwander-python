@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-
+<script src="js/jquery/jquery.tablesorter.min.js"></script>
+<script >
+  $(function() {
+    $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
+  });
+</script>
 <p>
 <hr>
   Word Wander lets you enter a prefix, a suffix, and/or a root and get all of the German words which contain those roots/prefixes/suffixes.
@@ -16,7 +21,7 @@
   </form>
   <p>
 
-  <h2>Examples</h2>
+  <h3>Examples</h3>
   <form action="/">All words which include 'ziehen' <p>
         <input type="textarea" rows="1" cols="10" name="prefix" value="">
         <input type="textarea" rows="1" cols="10" name="root" value="ziehen">
@@ -41,21 +46,44 @@
   </form>
   <p>
 
-
+  <h3>Concordance</h3>
+  Paste a block of text...get a concordance
+  <form action="/">
+        <textarea rows="10" cols="100%" name="textblock" value=""></textarea>
+        <br><input type="submit" name="foo">
+  </form>
   <!--current query: {{query}}<br>
   cnt query: {{cnt_query}}<br>
   -->
-
-
+<h3>Concordance</h3>
 
 <table class="table table-striped">  
-  {% for row in words %}
+<tr>
+<th>Wort</th>
+<th>Zahl</th>
+<th>Links</th>
+</tr>
+
+{% for word,cnt in concordance.items %}
+  <tr>          
+    <td width="25%">{{word}}</td> 
+    <td width="10%">{{cnt}}</td>    
+    <td><a href="http://dict.leo.org/#/search={{word}}&searchLoc=0&resultOrder=basic&multiwordShowSingle=on" target="_new"><img src="http://dict.leo.org/img/favicons/ende-929f8e10.ico"></a>
+  <a href="http://translate.google.com/#de/en/{{word}}" target="_new"><img src="http://google.com/favicon.ico" width="22" height="22"></a></td>
+  </tr>
+{% endfor %}
+</table>
+
+<h3>Word lookup</h3>
+<table class="table table-striped">  
+{% for row in words %}
   <tr>
     <td width="25%">{{row.word}}</td> 
     <td><a href="http://dict.leo.org/#/search={{row.word}}&searchLoc=0&resultOrder=basic&multiwordShowSingle=on" target="_new"><img src="http://dict.leo.org/img/favicons/ende-929f8e10.ico"></a>
   <a href="http://translate.google.com/#de/en/{{row.word}}" target="_new"><img src="http://google.com/favicon.ico" width="22" height="22"></a></td>
   </tr>
-
+{% endfor %}
+</table>
 
 <!--  <div class="col-md-4">{{row.word}} <a href="http://dict.leo.org/#/search={{row.word}}&searchLoc=0&resultOrder=basic&multiwordShowSingle=on" target="_new"><img src="http://dict.leo.org/img/favicons/ende-929f8e10.ico"></a>
   <a href="http://translate.google.com/#de/en/{{row.word}}" target="_new"><img src="http://google.com/favicon.ico" width="22" height="22"></a></div>
@@ -67,7 +95,7 @@
 
 </div>
 
-  {% endfor %}
+
 
 
 <hr>
